@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "bestflix",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Add a new tab to movie details with public info about the movie",
+    "description": "The description of the application"
+  }
+}
