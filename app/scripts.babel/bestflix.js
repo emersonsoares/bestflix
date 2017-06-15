@@ -13,13 +13,21 @@ $(function () {
             <div class="jawBonePane bestflix-pane" tabindex="-1" style="opacity: 1; transition-duration: 300ms; display: none;">
                 <div>
                     <div class="bestflix">
-                        <div class="jawbone-bestflix-info has-jawbone-nav-transition">
-                            Vamo ver!
-                        </div>
+                        <div class="jawbone-bestflix-info has-jawbone-nav-transition"></div>
                     </div>
                 </div>
             </div>
         `
+    }
+
+    const loadContent = function(container) {
+        $.ajax({
+            url: 'https://correiosapi.apphb.com/cep/05037001',
+            crossDomain: true
+        })
+        .done(function(data) {
+            container.html(JSON.stringify(data))
+        })
     }
 
     $.initialize('.jawBone', function() {
@@ -42,7 +50,11 @@ $(function () {
                 jawBonePanes.children('.jawBonePane').hide()
                 jawBone.children('.overviewPlay').hide()
 
-                jawBonePanes.children('.jawBonePane.bestflix-pane').fadeIn(300)
+                const bestflixPane = jawBonePanes.children('.jawBonePane.bestflix-pane')
+
+                loadContent(bestflixPane)
+
+                bestflixPane.fadeIn(300)
             }
             else {
                 jawBonePanes.children('.jawBonePane').show()

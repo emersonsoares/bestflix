@@ -25,5 +25,7 @@
       "run_at": "document_end"
     }
   ],
-  "permissions": []
+  "permissions": [
+    "https://correiosapi.apphb.com/"
+  ]
 }
