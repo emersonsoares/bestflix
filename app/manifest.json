@@ -14,5 +14,16 @@
       "scripts/background.js"
     ]
   },
+  "content_scripts": [
+    {
+      "matches": ["https://www.netflix.com/*"],
+      "js": [
+        "bower_components/jquery/dist/jquery.min.js", 
+        "bower_components/jquery.initialize/jquery.initialize.min.js",
+        "scripts/bestflix.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
   "permissions": []
 }

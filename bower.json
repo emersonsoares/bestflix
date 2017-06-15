@@ -2,7 +2,10 @@
   "name": "bestflix",
   "private": true,
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "jquery.initialize": "pietrasiak/jquery.initialize"
+  },
   "devDependencies": {
     "chai": "^4.0.2",
     "mocha": "^3.4.2"
