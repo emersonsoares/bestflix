@@ -1,32 +1,53 @@
 $(function () {
 
+    const bestflixTab = {
+        head: `
+            <li class="bestflix-tab">
+                <a role="link">
+                    Bestflix
+                </a>
+                <span></span>
+            </li>
+        `,
+        pane: `
+            <div class="jawBonePane bestflix-pane" tabindex="-1" style="opacity: 1; transition-duration: 300ms; display: none;">
+                <div>
+                    <div class="bestflix">
+                        <div class="jawbone-bestflix-info has-jawbone-nav-transition">
+                            Vamo ver!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `
+    }
+
     $.initialize('.jawBone', function() {
-        const menu = $(this).children('.menu')
+        const jawBone = $(this)
+        const menu = jawBone.children('.menu')
+        const jawBonePanes = jawBone.children('.jawBoneCommon').children('.jawBonePanes')
 
-        $(menu).append(
-            '<li class="bestflix"> \
-                <a role="link">Bestflix</a>\
-                <span></span>\
-            </li>'
-        )
+        menu.append(bestflixTab.head)
+        jawBonePanes.append(bestflixTab.pane)
 
-        $('.bestflix').on('click', function() {
-            const jawBone = $(this).parents('.jawBone');
+        menu.children().click(function() {
+            const menuItem = $(this)
 
-            const jawBonePanes = $(jawBone).children('.jawBoneCommon').children('.jawBonePanes');
+            menuItem
+                .addClass('current')
+                .siblings()
+                .removeClass('current')
 
-            $(jawBonePanes).children('.jawBonePane').hide();
-            $(jawBone).children('.overviewPlay').hide();
+            if(menuItem.hasClass('bestflix-tab')) {
+                jawBonePanes.children('.jawBonePane').hide()
+                jawBone.children('.overviewPlay').hide()
 
-            // const newPane = $(currentPane).clone();
-
-            // $(newPane).html('test');
-
-            // $(jawBonePanes).html($(newPane));
-        });
-
-        $(menu).children().on('click', function() {
-            $(this).addClass('current').siblings().removeClass('current');
-        });
+                jawBonePanes.children('.jawBonePane.bestflix-pane').fadeIn(300)
+            }
+            else {
+                jawBonePanes.children('.jawBonePane').show()
+                jawBonePanes.children('.jawBonePane.bestflix-pane').hide()
+            }
+        })
     })
 })
